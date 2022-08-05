@@ -7,6 +7,7 @@ import Login from './components/Login';
 import Logout from './components/Logout';
 import Graph from './components/Graph';
 import Timer from './Timer';
+import Navbar from './Navbar';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path='/login' element={<Login />}></Route>
           <Route path='/logout' element={<Logout />}></Route>
         </Routes>
+        <Navbar />
       </Rrouter>
   );
 }
