@@ -19,7 +19,7 @@ const Rouer = () => {
           <Route path='/timer' element={<Timer/>}></Route>
           <Route path='/graph' element={<Graph />}></Route>
           <Route path='/login' element={<Login setIsAuth={setIsAuth}/>}></Route>
-          <Route path='/logout' element={<Logout />}></Route>
+          <Route path='/logout' element={<Logout setIsAuth={setIsAuth}/>}></Route>
         </Routes>
     </div>
   )
