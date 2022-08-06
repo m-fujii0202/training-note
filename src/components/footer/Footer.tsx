@@ -4,7 +4,8 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHouse, faPenToSquare, faChartArea, faArrowRightFromBracket} from '@fortawesome/free-solid-svg-icons'
 
-const Footer = () => {
+const Footer = (props:any) => {
+  const {isAuth} = props;
   return (
     <SFooter>
         <Link to="/">
@@ -17,12 +18,20 @@ const Footer = () => {
         </Link>
         <Link to="/graph">
         <FontAwesomeIcon icon={faChartArea} />
-          Graph
-        </Link>
+          グラフ
+        </Link> 
+        {!isAuth ? (
         <Link to="/login">
         <FontAwesomeIcon icon={faArrowRightFromBracket} />  
-          Login
+          ログイン
         </Link>
+        ) : (
+          <Link to="/logout">
+        <FontAwesomeIcon icon={faArrowRightFromBracket} />  
+          ログアウト
+        </Link>
+        )}
+        
     </SFooter>
   )
 }

@@ -8,8 +8,8 @@ import Logout from '../Logout';
 import Setting from '../Setting';
 
 
-const Rouer = () => {
- const [isAuth, setIsAuth] = useState(false);
+const Rouer = (props:any) => {
+  const {setIsAuth} = props;
 
   return (
     <div>
