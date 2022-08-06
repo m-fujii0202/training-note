@@ -1,6 +1,6 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom';
-import Timer from '../../Timer';
+import Timer from '../Timer';
 import Graph from '../Graph';
 import Home from '../Home';
 import Login from '../Login';
