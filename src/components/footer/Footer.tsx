@@ -1,14 +1,28 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHouse, faPenToSquare, faChartArea, faArrowRightFromBracket} from '@fortawesome/free-solid-svg-icons'
 
 const Footer = () => {
   return (
     <SFooter>
-        <Link to="/">Home</Link>
-        <Link to="/setting">Setting</Link>
-        <Link to="/graph">Graph</Link>
-        <Link to="/login">Login</Link>
+        <Link to="/">
+        <FontAwesomeIcon icon={faHouse} />
+          Home
+        </Link>
+        <Link to="/setting">
+        <FontAwesomeIcon icon={faPenToSquare} />
+        メニュー
+        </Link>
+        <Link to="/graph">
+        <FontAwesomeIcon icon={faChartArea} />
+          Graph
+        </Link>
+        <Link to="/login">
+        <FontAwesomeIcon icon={faArrowRightFromBracket} />  
+          Login
+        </Link>
     </SFooter>
   )
 }

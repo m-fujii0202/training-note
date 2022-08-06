@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
+ 
 
 const Navbar = () => {
   return (
@@ -13,7 +14,7 @@ const Navbar = () => {
 const Snav = styled.nav`
     display: flex;
     width: 100%;
-    justify-content: space-around;
+    justify-content:center;
     align-items: center;
     height: 50px;
     background-color: rgb(109, 199, 91);
