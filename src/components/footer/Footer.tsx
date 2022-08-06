@@ -4,12 +4,12 @@ import "./Fotter.css";
 
 const Footer = () => {
   return (
-    <nav>
+    <footer>
         <Link to="/">Home</Link>
         <Link to="/setting">Setting</Link>
         <Link to="/graph">Graph</Link>
         <Link to="/login">Login</Link>
-    </nav>
+    </footer>
   )
 }
 
