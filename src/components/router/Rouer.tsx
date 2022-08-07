@@ -5,7 +5,7 @@ import Graph from '../Graph';
 import Home from '../Home';
 import Login from '../Login';
 import Logout from '../Logout';
-import Setting from '../Setting';
+import Menu from '../Menu';
 
 
 const Rouer = (props:any) => {
@@ -15,7 +15,7 @@ const Rouer = (props:any) => {
     <div>
         <Routes>
           <Route path='/' element={<Home />}></Route>
-          <Route path='/setting' element={<Setting/>}></Route>
+          <Route path='/setting' element={<Menu/>}></Route>
           <Route path='/timer' element={<Timer/>}></Route>
           <Route path='/graph' element={<Graph />}></Route>
           <Route path='/login' element={<Login setIsAuth={setIsAuth}/>}></Route>
