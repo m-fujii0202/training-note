@@ -8,8 +8,8 @@ import Logout from '../Logout';
 import Setting from '../Setting';
 
 
-const Rouer = () => {
- const [isAuth, setIsAuth] = useState(false);
+const Rouer = (props:any) => {
+  const {setIsAuth} = props;
 
   return (
     <div>
@@ -19,7 +19,7 @@ const Rouer = () => {
           <Route path='/timer' element={<Timer/>}></Route>
           <Route path='/graph' element={<Graph />}></Route>
           <Route path='/login' element={<Login setIsAuth={setIsAuth}/>}></Route>
-          <Route path='/logout' element={<Logout />}></Route>
+          <Route path='/logout' element={<Logout setIsAuth={setIsAuth}/>}></Route>
         </Routes>
     </div>
   )
