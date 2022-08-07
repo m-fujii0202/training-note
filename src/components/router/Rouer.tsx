@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Routes, Route } from 'react-router-dom';
-import Timer from '../../Timer';
+import Timer from '../Timer';
 import Graph from '../Graph';
 import Home from '../Home';
 import Login from '../Login';
@@ -9,6 +9,8 @@ import Setting from '../Setting';
 
 
 const Rouer = () => {
+ const [isAuth, setIsAuth] = useState(false);
+
   return (
     <div>
         <Routes>
@@ -16,7 +18,7 @@ const Rouer = () => {
           <Route path='/setting' element={<Setting/>}></Route>
           <Route path='/timer' element={<Timer/>}></Route>
           <Route path='/graph' element={<Graph />}></Route>
-          <Route path='/login' element={<Login />}></Route>
+          <Route path='/login' element={<Login setIsAuth={setIsAuth}/>}></Route>
           <Route path='/logout' element={<Logout />}></Route>
         </Routes>
     </div>

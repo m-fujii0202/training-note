@@ -1,12 +1,23 @@
 import React from 'react'
-import "./Navbar.css"
+import styled from 'styled-components'
+
+ 
 
 const Navbar = () => {
   return (
-    <nav>
+    <Snav>
        <h1>トレーニングノート</h1> 
-    </nav>
+    </Snav>
   )
 }
+
+const Snav = styled.nav`
+    display: flex;
+    width: 100%;
+    justify-content:center;
+    align-items: center;
+    height: 50px;
+    background-color: rgb(109, 199, 91);
+`
 
 export default Navbar
