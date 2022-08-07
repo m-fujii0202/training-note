@@ -1,7 +1,19 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components';
 
 const Menu = () => {
+
+const [menu, setMenu] = useState([
+  {chest:["ベンチプレス","ダンベルプレス","プッシュアップ"]},
+  {back:["チンニング","デッドリフト","ベントオーバーローイング"]},
+  {leg:["スクワット","レッグプレス","レッグエクステンション"]},
+  {abdomen:["クランチ","レッグレイズ","サイドクランチ"]},
+  {arm:["ダンベルカール","バーベルカール","ハンマーカール"]}
+])
+
+useEffect(()=>{
+  localStorage.setItem("menu", JSON.stringify(menu));
+},[menu])
 
   return (
     <SContainer>
