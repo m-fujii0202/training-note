@@ -1,11 +1,10 @@
-import React, { useState } from 'react'
 import { Routes, Route } from 'react-router-dom';
 import Timer from '../Timer';
 import Graph from '../Graph';
 import Home from '../Home';
 import Login from '../Login';
 import Logout from '../Logout';
-import Menu from '../Menu';
+import Menu from '../Menu/Menus';
 
 
 const Rouer = (props:any) => {
