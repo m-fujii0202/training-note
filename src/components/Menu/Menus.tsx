@@ -12,17 +12,19 @@ const Menu = () => {
     {arm:["ダンベルカール","バーベルカール","ハンマーカール"]}
   ])
   
+  // const [valu, setValu] = useState();
+  
   useEffect(()=>{
     localStorage.setItem("menu", JSON.stringify(menu));
   },[menu])
 
 
 const onChangeMenu = ()=>{
+  //ローカルストレージから任意のデータをとってくる機能
   console.log("部位を選択");
   const ChangeMenuData = localStorage.getItem("menu");
   console.log(ChangeMenuData);
 }
-
 
   return (
     <SContainer>

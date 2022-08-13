@@ -1,12 +1,13 @@
 import { Routes, Route } from 'react-router-dom';
-import Timer from '../Timer';
-import Graph from '../Graph';
-import Home from '../Home';
-import Login from '../Login';
-import Logout from '../Logout';
-import Menu from '../Menu/Menus';
+import Timer from '../components/pages/Timer';
+import Graph from '../components/pages/Graph';
+import Home from '../components/pages/Home';
+import Login from '../components/pages/Login';
+import Logout from '../components/pages/Logout';
+import Menu from '../components/Menu/Menus';
 
 
+//
 const Rouer = (props:any) => {
   const {setIsAuth} = props;
 

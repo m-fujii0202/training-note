@@ -6,7 +6,7 @@ const DetailedMenu  = (props:any) => {
   
 
   const onAddMenu = ()=>{
-    console.log("メニューの追加");
+    // console.log("メニューの追加");
     const newMenu ={
       menuname:"新しいメニュー"
     }
@@ -35,7 +35,7 @@ const DetailedMenu  = (props:any) => {
       </div>
 
       <div className='NextTimeVolume'>
-        <p> 目標のボリュームです</p>
+        <p>目標のボリュームです</p>
       </div>
     </SVolumeContainer>
   </SdetailMenu>
