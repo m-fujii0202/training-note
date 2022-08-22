@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components';
-import DetailedMenu from './DetailedMenu'
+import DetailedMenu from './DetailedMenu';
 
 const Menu = () => {
+  const [value, setValue] = useState("胸");
 
   const [menu, setMenu] = useState([
     {chest:["ベンチプレス","ダンベルプレス","プッシュアップ"]},
@@ -12,13 +13,13 @@ const Menu = () => {
     {arm:["ダンベルカール","バーベルカール","ハンマーカール"]}
   ])
   
-  // const [valu, setValu] = useState();
   
-  useEffect(()=>{
+  useEffect(() => {
     localStorage.setItem("menu", JSON.stringify(menu));
-  },[menu])
+    console.log(menu[0]);
+  }, [menu, value]);
 
-
+  
 const onChangeMenu = ()=>{
   //ローカルストレージから任意のデータをとってくる機能
   console.log("部位を選択");
@@ -33,11 +34,11 @@ const onChangeMenu = ()=>{
       </div>
         <div className='menusContainer'>
           <SBodycontainer>
-            <Sbutton onClick={onChangeMenu} >胸部</Sbutton>
-            <Sbutton>背部</Sbutton>
-            <Sbutton>脚部</Sbutton>
-            <Sbutton>腹部</Sbutton>
-            <Sbutton>腕部</Sbutton>  
+          <Sbutton onClick={(e) => {setValue("chest")}}>胸部</Sbutton>
+          <Sbutton onClick={(e) => {setValue("back")}}>背部</Sbutton>
+          <Sbutton onClick={(e) => {setValue("leg")}}>脚部</Sbutton>
+          <Sbutton onClick={(e) => {setValue("abdomen")}}>腹部</Sbutton>
+          <Sbutton onClick={(e) => {setValue("arm")}}>腕部</Sbutton>
           </SBodycontainer>
           
           <DetailedMenu setMenu={setMenu} menu={menu}/>

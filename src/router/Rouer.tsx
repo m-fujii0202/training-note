@@ -4,7 +4,7 @@ import Graph from '../components/pages/Graph';
 import Home from '../components/pages/Home';
 import Login from '../components/pages/Login';
 import Logout from '../components/pages/Logout';
-import Menu from '../components/Menu/Menus';
+import Menu from '../components/pages/Menu/Menus';
 
 
 //
