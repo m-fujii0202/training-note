@@ -12,6 +12,7 @@ const Menu = () => {
     ["クランチ", "レッグレイズ", "サイドクランチ"],
     ["ダンベルカール", "バーベルカール", "ハンマーカール"],
   ]);
+  const siteList = ["胸部", "背部", "脚部", "腹部", "腕部"];
 
   const [activeButton, setActiveButton] = useState(false);
 
@@ -21,51 +22,26 @@ const Menu = () => {
     console.log(menu[value]);
   }, [menu, value]);
 
-
   return (
     <SContainer>
       <div className="title">
         <h2>トレーニングメニュー</h2>
       </div>
-      
+
       <div className="menusContainer">
         <SBodycontainer>
+          {siteList.map((site: string, index) => (
+            <Sbutton
+              className={`${value === index && "active"}`}
+              key={index}
+              onClick={(e) => {
+                setValue(index);
+              }}
+            >
+              {site}
+            </Sbutton>
+          ))}
           {/* TODO：値によってボタンの色を切り替える */}
-          <Sbutton
-            onClick={(e) => {
-              setValue(0);
-            }}
-          >
-            胸部
-          </Sbutton>
-          <Sbutton
-            onClick={(e) => {
-              setValue(1);
-            }}
-          >
-            背部
-          </Sbutton>
-          <Sbutton
-            onClick={(e) => {
-              setValue(2);
-            }}
-          >
-            脚部
-          </Sbutton>
-          <Sbutton
-            onClick={(e) => {
-              setValue(3);
-            }}
-          >
-            腹部
-          </Sbutton>
-          <Sbutton
-            onClick={(e) => {
-              setValue(4);
-            }}
-          >
-            腕部
-          </Sbutton>
         </SBodycontainer>
 
         <DetailedMenu menu={menu[value]} setMenu={setMenu} />
@@ -88,10 +64,12 @@ const SBodycontainer = styled.div`
 const Sbutton = styled.button`
   background-color: aqua;
   padding: 20px;
-  &:active{
-    background-color: #e3aa0d;
-  }&:hover{
+
+  &:hover {
     cursor: pointer;
+  }
+  &.active {
+    background-color: #e3aa0d;
   }
 `;
 
