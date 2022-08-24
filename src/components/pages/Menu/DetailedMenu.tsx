@@ -4,7 +4,7 @@ import styled from "styled-components";
 const DetailedMenu = (props: any) => {
   console.log("props", props);
 
-  const { menu } = props;
+  const { menu, setMenu } = props;
 
   const onAddMenu = () => {
     // console.log("メニューの追加");
@@ -18,14 +18,14 @@ const DetailedMenu = (props: any) => {
     <SdetailMenu>
       <SMenuLists>
         {/* TODO：mapで表示させる */}
-        <div className="menuList">
-          <button>{menu}</button>
-        </div>
+          {menu.map((menu:any) => (
+            <button>{menu}</button>
+          ))}
+      </SMenuLists>
 
-        <div className="addMenu">
+      <div className="addMenu">
           <button onClick={onAddMenu}>追加</button>
         </div>
-      </SMenuLists>
 
       <SVolumeContainer>
         <div className="lastTimeVolume">

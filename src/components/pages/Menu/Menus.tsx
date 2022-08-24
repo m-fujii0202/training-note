@@ -13,24 +13,21 @@ const Menu = () => {
     ["ダンベルカール", "バーベルカール", "ハンマーカール"],
   ]);
 
+  const [activeButton, setActiveButton] = useState(false);
+
   useEffect(() => {
     localStorage.setItem("menu", JSON.stringify(menu));
     console.log("value", value);
     console.log(menu[value]);
   }, [menu, value]);
 
-  const onChangeMenu = () => {
-    //ローカルストレージから任意のデータをとってくる機能
-    console.log("部位を選択");
-    const ChangeMenuData = localStorage.getItem("menu");
-    console.log(ChangeMenuData);
-  };
 
   return (
     <SContainer>
       <div className="title">
         <h2>トレーニングメニュー</h2>
       </div>
+      
       <div className="menusContainer">
         <SBodycontainer>
           {/* TODO：値によってボタンの色を切り替える */}
@@ -71,7 +68,7 @@ const Menu = () => {
           </Sbutton>
         </SBodycontainer>
 
-        <DetailedMenu menu={menu[value]} />
+        <DetailedMenu menu={menu[value]} setMenu={setMenu} />
       </div>
     </SContainer>
   );
@@ -91,6 +88,11 @@ const SBodycontainer = styled.div`
 const Sbutton = styled.button`
   background-color: aqua;
   padding: 20px;
+  &:active{
+    background-color: #e3aa0d;
+  }&:hover{
+    cursor: pointer;
+  }
 `;
 
 export default Menu;
