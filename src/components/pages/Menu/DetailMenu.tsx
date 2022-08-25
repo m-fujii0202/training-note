@@ -1,15 +1,16 @@
+import { Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay, useDisclosure } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import Modal from "../../../Modal/Modal";
+// import Modal from "../../../Modal/Modal";
 
 const DetailedMenu = (props: any) => {
   // console.log("props", props);
 
   const { menus, setMenus } = props;
 
-  const openModal = () => {
-   
-  };
+  const { isOpen, onOpen, onClose} = useDisclosure();
+
+  const onClicAddMenu = ()=> onOpen();
 
   return (
     <SdetailMenu>
@@ -25,9 +26,17 @@ const DetailedMenu = (props: any) => {
       </SMenuLists>
 
       <div className="addMenu">
-          <button onClick={openModal}>追加</button>
-          <Modal />
+          <button onClick={onClicAddMenu}>追加　モーダルを表示</button>
       </div>
+      
+      {/* モーダル表示に関する関数 */}
+      <Modal isOpen={isOpen} onClose={onClose}>
+      <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>テスト</ModalHeader>
+          <ModalCloseButton />
+        </ModalContent>
+      </Modal>
 
       <SVolumeContainer>
         <div className="lastTimeVolume">
@@ -38,6 +47,8 @@ const DetailedMenu = (props: any) => {
           <p>目標のボリュームです</p>
         </div>
       </SVolumeContainer>
+
+      
     </SdetailMenu>
   );
 };

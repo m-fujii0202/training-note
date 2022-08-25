@@ -1,13 +1,15 @@
+import { ModalContent, ModalOverlay } from '@chakra-ui/react'
 import React from 'react'
 
-const Modal = () => {
+const Modal = (props:any) => {
+    const {isOpen, onClose} =props;
   return (
-    <div id="overlay">
-        <div id="content">
-        <p>これがモーダルウィンドウです。</p>
-        <p><button>close</button></p>
-        </div>
-  </div>
+   <>
+   <ModalOverlay />
+   <ModalContent>
+      <p>テスト</p>
+   </ModalContent>
+   </>
   )
 }
 
