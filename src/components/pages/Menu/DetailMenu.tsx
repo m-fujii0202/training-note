@@ -2,24 +2,31 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const DetailedMenu = (props: any) => {
-  console.log("props", props);
+  // console.log("props", props);
 
-  const { menu, setMenu } = props;
+  const { menus, setMenus } = props;
 
   const onAddMenu = () => {
     // console.log("メニューの追加");
-    const newMenu = {
-      menuname: "新しいメニュー",
-    };
-    // setMenu(newMenu);
+    // const newMenu = {
+    //   id:1,
+    //   title: "新しいメニュー",
+    //   cntent:"メニュー内容",
+
+    // };
+    // setMenu([...menu,newMenu]);
   };
 
   return (
     <SdetailMenu>
       <SMenuLists>
         {/* TODO：mapで表示させる */}
-          {menu.map((menu:any) => (
-            <button>{menu}</button>
+          {menus.map((menu:any,index: any) => (
+            <button
+            key={index}
+            >
+              {menu}
+            </button>
           ))}
       </SMenuLists>
 

@@ -1,26 +1,26 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import DetailedMenu from "./DetailedMenu";
+import DetailedMenu from "./DetailMenu";
 
 const Menu = () => {
   const [value, setValue] = useState(0);
 
-  const [menu, setMenu] = useState([
+  const [menus, setMenus] = useState([
     ["ベンチプレス", "ダンベルプレス", "プッシュアップ"],
     ["チンニング", "デッドリフト", "ベントオーバーローイング"],
     ["スクワット", "レッグプレス", "レッグエクステンション"],
     ["クランチ", "レッグレイズ", "サイドクランチ"],
     ["ダンベルカール", "バーベルカール", "ハンマーカール"],
   ]);
+
+  //①部位の配列
   const siteList = ["胸部", "背部", "脚部", "腹部", "腕部"];
 
-  const [activeButton, setActiveButton] = useState(false);
-
   useEffect(() => {
-    localStorage.setItem("menu", JSON.stringify(menu));
+    localStorage.setItem("menu", JSON.stringify(menus));
     console.log("value", value);
-    console.log(menu[value]);
-  }, [menu, value]);
+    console.log(menus[value]);
+  }, [menus, value]);
 
   return (
     <SContainer>
@@ -30,6 +30,11 @@ const Menu = () => {
 
       <div className="menusContainer">
         <SBodycontainer>
+          {/* 
+          ②部位の配列を展開し、siteListの一つ一つをsiteとする　
+          ③展開したsiteにindex(番号）を割り振り、keyとする
+          ④menu[value]でしてした番号ととindex番号が等しい時activeとなる　${value === index && "active"}
+          */}
           {siteList.map((site: string, index) => (
             <Sbutton
               className={`${value === index && "active"}`}
@@ -44,7 +49,7 @@ const Menu = () => {
           {/* TODO：値によってボタンの色を切り替える */}
         </SBodycontainer>
 
-        <DetailedMenu menu={menu[value]} setMenu={setMenu} />
+        <DetailedMenu menu={menus[value]} setMenu={setMenus} />
       </div>
     </SContainer>
   );
