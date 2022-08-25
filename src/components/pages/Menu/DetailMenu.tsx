@@ -1,20 +1,14 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import Modal from "../../../Modal/Modal";
 
 const DetailedMenu = (props: any) => {
   // console.log("props", props);
 
   const { menus, setMenus } = props;
 
-  const onAddMenu = () => {
-    // console.log("メニューの追加");
-    // const newMenu = {
-    //   id:1,
-    //   title: "新しいメニュー",
-    //   cntent:"メニュー内容",
-
-    // };
-    // setMenu([...menu,newMenu]);
+  const openModal = () => {
+   
   };
 
   return (
@@ -31,8 +25,9 @@ const DetailedMenu = (props: any) => {
       </SMenuLists>
 
       <div className="addMenu">
-          <button onClick={onAddMenu}>追加</button>
-        </div>
+          <button onClick={openModal}>追加</button>
+          <Modal />
+      </div>
 
       <SVolumeContainer>
         <div className="lastTimeVolume">

@@ -49,7 +49,7 @@ const Menu = () => {
           {/* TODO：値によってボタンの色を切り替える */}
         </SBodycontainer>
 
-        <DetailedMenu menu={menus[value]} setMenu={setMenus} />
+        <DetailedMenu menus={menus[value]} setMenu={setMenus} />
       </div>
     </SContainer>
   );
