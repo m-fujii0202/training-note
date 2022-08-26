@@ -1,37 +1,16 @@
-import { CloseButton } from "@chakra-ui/react";
 import { Box, Button, IconButton, Modal, Typography } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import ModalAddMenu from "../../../Modal/ModalAddMenu";
 
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-};
 
-const closeButtonStyle = {
-  height: 0,
-  textAlign: "right",
-};
 
 
 const DetailedMenu = (props: any) => {
   // console.log("props", props);
 
   const { menus, setMenus } = props;
-
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
-
 
   return (
     <SdetailMenu>
@@ -46,35 +25,7 @@ const DetailedMenu = (props: any) => {
           ))}
       </SMenuLists>
 
-      {/* モーダルの表示ボタン */}
-      <div className="addMenu">
-          <button onClick={handleOpen}>追加　モーダルを表示</button>
-      </div>
-      
-      {/* モーダル表示に関する関数 */}
-        <Modal
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-        >
-          <Box sx={style}>
-          <Box sx={closeButtonStyle}>
-            <IconButton onClick={handleClose}>
-              <CloseIcon>
-                閉じる
-              </CloseIcon>
-            </IconButton>
-          </Box>
-            <Typography id="modal-modal-title" variant="h6" component="h2">
-              トレーニングメニューの追加
-            </Typography>
-            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-              テキスト
-            </Typography>
-          </Box>
-        </Modal>
-
+      <ModalAddMenu menus={menus} setMenus={setMenus}/>
       
       <SVolumeContainer>
         <div className="lastTimeVolume">
