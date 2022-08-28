@@ -11,13 +11,21 @@ const DetailedMenu = (props: any) => {
   const { menus, setMenus, siteList, onDeleteMenu } = props;
   console.log('props');
   console.log(menus);
+  
+
+  // const onDeleteMenu = (index: any)=>{
+  //  const newMenus = [...menus];
+  //  newMenus.splice(index,1);
+  //  setMenus(newMenus);
+  // //  alert(index);
+  // }
 
   return (
     <SdetailMenu>
       <SMenuLists>
         {/* TODO：mapで表示させる */}
         
-          {menus.map((menu:string,index: number) => {
+          {menus.map((menu:any,index: any) => {
             return (
             <Smenus
             key={index}
@@ -28,7 +36,7 @@ const DetailedMenu = (props: any) => {
               </Sbutton>
 
               <Sbutton 
-               onClick={()=>onDeleteMenu(index)}
+               onClick={()=>onDeleteMenu(menu.index)}
                >
                 削除
               </Sbutton>

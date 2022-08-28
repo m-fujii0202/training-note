@@ -23,13 +23,20 @@ const Menu = () => {
   }, [menus, value]);
 
   //メニューを削除する関数
-  const onDeleteMenu = (index:any)=>{
-    console.log('削除');
-    console.log(index);
-    //filter関数を使用し、menuのindexと選択したindexが等しいものを削除するロジック
-    const filterMenus = menus.filter((menu) => menu[value] !== index);
-    setMenus(filterMenus);
-  }
+  // const onDeleteMenu = (index:any)=>{
+  //   console.log('削除');
+  //   console.log(index);
+  //   //filter関数を使用し、menuのindexと選択したindexが等しいものを削除するロジック
+  //   const filterMenus = menus.filter((menu) => menu[value] !== index);
+  //   setMenus(filterMenus);
+  // }
+
+  const onDeleteMenu = (index: number)=>{
+    const newMenus = [...menus];
+    newMenus.splice(index,1);
+    setMenus(newMenus);
+   //  alert(index);
+   }
 
   return (
     <SContainer>
