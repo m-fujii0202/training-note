@@ -18,9 +18,18 @@ const Menu = () => {
 
   useEffect(() => {
     localStorage.setItem("menu", JSON.stringify(menus));
-    console.log("value", value);
-    console.log(menus[value]);
+    // console.log("value", value);
+    // console.log(menus[value]);
   }, [menus, value]);
+
+  //メニューを削除する関数
+  const onDeleteMenu = (index:any)=>{
+    console.log('削除');
+    console.log(index);
+    //filter関数を使用し、menuのindexと選択したindexが等しいものを削除するロジック
+    const filterMenus = menus.filter((menu) => menu[value] !== index);
+    setMenus(filterMenus);
+  }
 
   return (
     <SContainer>
@@ -33,7 +42,7 @@ const Menu = () => {
           {/* 
           ②部位の配列を展開し、siteListの一つ一つをsiteとする　
           ③展開したsiteにindex(番号）を割り振り、keyとする
-          ④menu[value]でしてした番号ととindex番号が等しい時activeとなる　${value === index && "active"}
+          ④menu[value]でしてした番号とindex番号が等しい時activeとなる　${value === index && "active"}
           */}
           {siteList.map((site: string, index) => (
             <Sbutton
@@ -49,7 +58,7 @@ const Menu = () => {
           {/* TODO：値によってボタンの色を切り替える */}
         </SBodycontainer>
 
-        <DetailedMenu menus={menus[value]} setMenu={setMenus} />
+        <DetailedMenu menus={menus[value]} setMenus={setMenus} siteList={siteList} onDeleteMenu={onDeleteMenu}/>
       </div>
     </SContainer>
   );

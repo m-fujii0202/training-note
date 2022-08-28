@@ -21,17 +21,31 @@ const closeButtonStyle = {
 
 const ModalAddMenu = (props:any) => {
  
-  const { menus, setMenus } = props;
+  const { menus, setMenus, siteList } = props;
+
+  //新しいメニューを入力するステート
+  const [newMenu, setNewMenu] = useState('');
 
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
- const [body, setBody] = useState('');
+  //初期値の設定をどうするか？
+ const [body, setBody] = useState(siteList[0]);
 
  const handleChange = (e: { target: { value: React.SetStateAction<string>; }; })=>{
   setBody(e.target.value)
+  console.log('どの部位が選択されているのか');
+  console.log(body);
  }
+
+ //新しいものメニューを追加する関数
+ const onChangeMenu = (event: { target: { value: React.SetStateAction<string>; }; })=> setNewMenu(event.target.value);
+ const onAddNewMenu = ()=>{
+  const AddNewMenu =[...menus, newMenu];
+  setMenus(AddNewMenu);
+  alert(newMenu);
+ };
 
   return (
     <div>
@@ -60,22 +74,31 @@ const ModalAddMenu = (props:any) => {
 
             <Box width='250px'>
               <TextField
-               label='Select body'
+               label='部位選択'
                select
                value={body}
                onChange={handleChange}
               >
-                <MenuItem value={'chest'}>胸部</MenuItem>
-                <MenuItem value={'back'}>背部</MenuItem>
-                <MenuItem value={'abdomen'}>腹部</MenuItem>
-                <MenuItem value={'leg'}>脚部</MenuItem>
-                <MenuItem value={'arm'}>腕部</MenuItem>
+                {/* siteList(部位)をマップで展開 */}
+                {siteList.map((site:string,index:number)=>(
+                  <MenuItem 
+                  value={site}
+                  key={index}
+                  >
+                    {site}
+                  </MenuItem>
+                ))}
               </TextField>
             </Box>
+
             <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-              <input type="text" />
-              <button>追加</button>
+              <input placeholder='メニューを追加' value={newMenu} onChange={onChangeMenu}/>
+              <button 
+              onClick={onAddNewMenu}
+              >追加
+               </button>
             </Typography>
+
           </Box>
         </Modal>
     </div>

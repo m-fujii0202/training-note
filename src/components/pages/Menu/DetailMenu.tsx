@@ -5,27 +5,40 @@ import styled from "styled-components";
 import ModalAddMenu from "../../../Modal/ModalAddMenu";
 
 
-
-
 const DetailedMenu = (props: any) => {
   // console.log("props", props);
 
-  const { menus, setMenus } = props;
+  const { menus, setMenus, siteList, onDeleteMenu } = props;
+  console.log('props');
+  console.log(menus);
 
   return (
     <SdetailMenu>
       <SMenuLists>
         {/* TODO：mapで表示させる */}
-          {menus.map((menu:any,index: any) => (
-            <button
+        
+          {menus.map((menu:string,index: number) => {
+            return (
+            <Smenus
             key={index}
             >
               {menu}
-            </button>
-          ))}
+              <Sbutton>
+                詳細 モーダルを表示
+              </Sbutton>
+
+              <Sbutton 
+               onClick={()=>onDeleteMenu(index)}
+               >
+                削除
+              </Sbutton>
+
+            </Smenus>
+            );
+            })}
       </SMenuLists>
 
-      <ModalAddMenu menus={menus} setMenus={setMenus}/>
+      <ModalAddMenu setMenus={setMenus} siteList={siteList} menus={menus}/>
       
       <SVolumeContainer>
         <div className="lastTimeVolume">
@@ -50,6 +63,23 @@ const SMenuLists = styled.div`
   display: flex;
   flex-direction: column;
 `;
+
+const Sbutton = styled.button`
+background-color: #adf7f7;
+margin-left: 5px;
+border-radius: 10px;
+transition: 0.3s;
+
+&:hover {
+  cursor: pointer;
+} 
+`
+
+const Smenus = styled.div`
+  background-color: #e6f0f0;
+  width: 100%;
+  margin-top: 5px;
+`
 
 const SVolumeContainer = styled.div`
   display: flex;
