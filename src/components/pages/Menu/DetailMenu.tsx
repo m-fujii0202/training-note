@@ -21,7 +21,7 @@ const DetailedMenu = (props: any) => {
         {/* TODO：mapで表示させる */}
         
           {menus[value].map((menu:any,index: number) => {
-            console.log('MENU',menu);
+            // console.log('MENU',menu);
             return (
             <Smenus
             key={index}

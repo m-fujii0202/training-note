@@ -2,6 +2,8 @@ import { IconButton, MenuItem, Modal, TextField, Typography,Box } from '@mui/mat
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import CloseIcon from "@mui/icons-material/Close";
+import ModalSelectWeight from './ModalSelectWeight';
+import ModalSelectRep from './ModalSelectRep';
 
 const style = {
     position: "absolute",
@@ -22,7 +24,7 @@ const style = {
 
 const ModalSettingMenu  = (props:any) => {
     const { menus, setMenus, siteList, value } = props;
-    console.log(menus);
+
 
   //モーダル表示のstate
   const [open, setOpen] = React.useState(false);
@@ -31,11 +33,6 @@ const ModalSettingMenu  = (props:any) => {
 
   const [body, setBody] = useState(value);
 
-  const handleChange = (e: { target: { value:any }; })=>{
-    setBody(e.target.value);
-    // console.log('どの部位が選択されているのか');
-    // console.log(e.target.value);
- }
 
   return (
     <div>
@@ -65,43 +62,11 @@ const ModalSettingMenu  = (props:any) => {
             <div className='setContainer'>
                 １セット目
             </div>
-            <Box width='250px'>
-              <TextField
-               label='重量選択'
-               select
-               value={body}
-               onChange={(e)=>handleChange(e)}
-              >
-                {/* 重量の選択を可能とする */}
-                {siteList.map((site:string,index:number)=>(
-                  <MenuItem
-                  value={index}
-                  key={index}
-                  >
-                    {site}
-                  </MenuItem>
-                ))}
-              </TextField>
-            </Box>
 
-            <Box width='250px'>
-              <TextField
-               label='レップ'
-               select
-               value={body}
-               onChange={(e)=>handleChange(e)}
-              >
-                {/* レップの選択を可能とする */}
-                {siteList.map((site:string,index:number)=>(
-                  <MenuItem
-                  value={index}
-                  key={index}
-                  >
-                    {site}
-                  </MenuItem>
-                ))}
-              </TextField>
-            </Box>
+            <ModalSelectWeight />
+
+           <ModalSelectRep />
+          
             </div>
 
           </Box>
