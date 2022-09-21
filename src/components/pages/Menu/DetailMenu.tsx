@@ -1,39 +1,39 @@
-import { Box, Button, IconButton, Modal, Typography } from "@mui/material";
-import CloseIcon from "@mui/icons-material/Close";
-import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import ModalAddMenu from "../../../Modal/ModalAddMenu";
+import ModalSettingMenu from "../../../Modal/ModalSettingMenu ";
 
 
 const DetailedMenu = (props: any) => {
   // console.log("props", props);
 
-  const { menus, setMenus, siteList, onDeleteMenu } = props;
-  console.log('props');
-  console.log(menus);
-  
-
-  // const onDeleteMenu = (index: any)=>{
-  //  const newMenus = [...menus];
-  //  newMenus.splice(index,1);
-  //  setMenus(newMenus);
-  // //  alert(index);
-  // }
+  const { 
+    menus, 
+    setMenus, 
+    siteList, 
+    onDeleteMenu,
+    value } = props;
+  // console.log('props');
+  // console.log(menus);
 
   return (
     <SdetailMenu>
       <SMenuLists>
         {/* TODO：mapで表示させる */}
         
-          {menus.map((menu:any,index: any) => {
+          {menus[value].map((menu:any,index: number) => {
+            console.log('MENU',menu);
             return (
             <Smenus
             key={index}
             >
               {menu}
-              <Sbutton>
-                詳細 モーダルを表示
-              </Sbutton>
+
+              <ModalSettingMenu 
+               setMenus={setMenus} 
+               siteList={siteList} 
+               menus={menus} 
+               value={value}
+              />
 
               <Sbutton 
                onClick={()=>onDeleteMenu(menu.index)}
@@ -46,7 +46,12 @@ const DetailedMenu = (props: any) => {
             })}
       </SMenuLists>
 
-      <ModalAddMenu setMenus={setMenus} siteList={siteList} menus={menus}/>
+      <ModalAddMenu 
+        setMenus={setMenus} 
+        siteList={siteList} 
+        menus={menus} 
+        value={value}
+      />
       
       <SVolumeContainer>
         <div className="lastTimeVolume">
