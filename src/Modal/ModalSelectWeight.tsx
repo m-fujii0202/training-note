@@ -9,8 +9,7 @@ const ModalSelectWeight = () => {
   const handleChange = (e: { target: { value:any }; })=>{
     console.log();
     setWeight(e.target.value);
-    // console.log('どの部位が選択されているのか');
-    // console.log(e.target.value);
+    
  }
 
   return (

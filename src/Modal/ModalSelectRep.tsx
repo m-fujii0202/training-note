@@ -8,8 +8,7 @@ const ModalSelectRep = () => {
     const handleChange = (e: { target: { value:any }; })=>{
         console.log();
         setRep(e.target.value);
-        // console.log('どの部位が選択されているのか');
-        // console.log(e.target.value);
+        
      }
 
   return (

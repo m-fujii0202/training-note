@@ -22,7 +22,7 @@ const closeButtonStyle = {
 const ModalAddMenu = (props:any) => {
  
   const { menus, setMenus, siteList, value } = props;
-  console.log(`menu`,menus);
+  // console.log(`menu`,menus);
   
   //新しいメニューを入力するステート
   const [newMenu, setNewMenu] = useState('');
@@ -46,7 +46,7 @@ const ModalAddMenu = (props:any) => {
  const onAddNewMenu = ()=>{
 
   const AddNewMenu =[...menus];
-  console.log('AddNewMenu[body]',AddNewMenu[body]);
+  // console.log('AddNewMenu[body]',AddNewMenu[body]);
   AddNewMenu[body].unshift(newMenu);
   setMenus(AddNewMenu);
   // alert(newMenu);

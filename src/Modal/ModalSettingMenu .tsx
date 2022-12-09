@@ -33,6 +33,15 @@ const ModalSettingMenu  = (props:any) => {
 
   const [body, setBody] = useState(value);
 
+  const [sets, setSets] = useState([]);
+
+  const onAddNewSet = ()=>{
+   console.log("新しいセット");
+   const newSets = {
+    
+   }
+  }
+
 
   return (
     <div>
@@ -65,10 +74,15 @@ const ModalSettingMenu  = (props:any) => {
 
             <ModalSelectWeight />
 
-           <ModalSelectRep />
+            <ModalSelectRep />
           
-            </div>
+          </div>
 
+          <button
+          onClick={onAddNewSet}
+          >
+            セットの追加
+          </button>
           </Box>
         </Modal>
     </div>
