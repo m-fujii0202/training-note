@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Box, Button, IconButton, InputLabel, MenuItem, Modal, Select, TextField, Typography } from "@mui/material";
+import { Box, IconButton,  MenuItem, Modal,  TextField, Typography } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 
 const style = {
@@ -21,8 +21,9 @@ const closeButtonStyle = {
 
 const ModalAddMenu = (props:any) => {
  
-  const { menus, setMenus, siteList } = props;
-
+  const { menus, setMenus, siteList, value } = props;
+  // console.log(`menu`,menus);
+  
   //新しいメニューを入力するステート
   const [newMenu, setNewMenu] = useState('');
 
@@ -31,21 +32,26 @@ const ModalAddMenu = (props:any) => {
   const handleClose = () => setOpen(false);
 
   //初期値の設定をどうするか？
- const [body, setBody] = useState(siteList[0]);
+  const [body, setBody] = useState(value);
 
- const handleChange = (e: { target: { value: React.SetStateAction<string>; }; })=>{
-  setBody(e.target.value)
-  console.log('どの部位が選択されているのか');
-  console.log(body);
+  const handleChange = (e: { target: { value:any }; })=>{
+    setBody(e.target.value);
+    // console.log('どの部位が選択されているのか');
+    // console.log(e.target.value);
  }
 
  //新しいものメニューを追加する関数
- const onChangeMenu = (event: { target: { value: React.SetStateAction<string>; }; })=> setNewMenu(event.target.value);
+ const onChangeMenu = (e: { target: { value: React.SetStateAction<string>; }; })=> 
+ setNewMenu(e.target.value);
  const onAddNewMenu = ()=>{
-  const AddNewMenu =[...menus, newMenu];
+
+  const AddNewMenu =[...menus];
+  // console.log('AddNewMenu[body]',AddNewMenu[body]);
+  AddNewMenu[body].unshift(newMenu);
   setMenus(AddNewMenu);
-  alert(newMenu);
+  // alert(newMenu);
  };
+
 
   return (
     <div>
@@ -77,12 +83,12 @@ const ModalAddMenu = (props:any) => {
                label='部位選択'
                select
                value={body}
-               onChange={handleChange}
+               onChange={(e)=>handleChange(e)}
               >
-                {/* siteList(部位)をマップで展開 */}
+
                 {siteList.map((site:string,index:number)=>(
                   <MenuItem 
-                  value={site}
+                  value={index}
                   key={index}
                   >
                     {site}
@@ -92,13 +98,17 @@ const ModalAddMenu = (props:any) => {
             </Box>
 
             <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-              <input placeholder='メニューを追加' value={newMenu} onChange={onChangeMenu}/>
+              <input 
+              placeholder='メニューを追加' 
+              value={newMenu} 
+              onChange={onChangeMenu}
+              />
+
               <button 
               onClick={onAddNewMenu}
               >追加
                </button>
             </Typography>
-
           </Box>
         </Modal>
     </div>

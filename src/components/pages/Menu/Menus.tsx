@@ -23,20 +23,12 @@ const Menu = () => {
   }, [menus, value]);
 
   //メニューを削除する関数
-  // const onDeleteMenu = (index:any)=>{
-  //   console.log('削除');
-  //   console.log(index);
-  //   //filter関数を使用し、menuのindexと選択したindexが等しいものを削除するロジック
-  //   const filterMenus = menus.filter((menu) => menu[value] !== index);
-  //   setMenus(filterMenus);
-  // }
 
-  const onDeleteMenu = (index: number)=>{
+  const onDeleteMenu = (index: number) => {
     const newMenus = [...menus];
-    newMenus.splice(index,1);
+    newMenus[value].splice(index, 1);
     setMenus(newMenus);
-   //  alert(index);
-   }
+  };
 
   return (
     <SContainer>
@@ -46,11 +38,6 @@ const Menu = () => {
 
       <div className="menusContainer">
         <SBodycontainer>
-          {/* 
-          ②部位の配列を展開し、siteListの一つ一つをsiteとする　
-          ③展開したsiteにindex(番号）を割り振り、keyとする
-          ④menu[value]でしてした番号とindex番号が等しい時activeとなる　${value === index && "active"}
-          */}
           {siteList.map((site: string, index) => (
             <Sbutton
               className={`${value === index && "active"}`}
@@ -62,10 +49,16 @@ const Menu = () => {
               {site}
             </Sbutton>
           ))}
-          {/* TODO：値によってボタンの色を切り替える */}
+
         </SBodycontainer>
 
-        <DetailedMenu menus={menus[value]} setMenus={setMenus} siteList={siteList} onDeleteMenu={onDeleteMenu}/>
+        <DetailedMenu 
+          menus={menus} 
+          setMenus={setMenus} 
+          siteList={siteList} 
+          onDeleteMenu={onDeleteMenu}
+          value={value}
+          />
       </div>
     </SContainer>
   );
